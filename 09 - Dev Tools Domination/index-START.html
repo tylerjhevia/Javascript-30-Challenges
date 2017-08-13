@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
 
     function makeGreen() {
       const p = document.querySelector('p');
@@ -18,29 +20,52 @@
     }
 
     // Regular
+    console.log('hello')
 
     // Interpolated
-
+    console.log('Hello I am a %s string!', 'fart')
     // Styled
-
+    console.log('%c cool text', 'font-size: 50px; background: red; text-shadow: 10px 10px 0 blue')
     // warning!
-
+    console.warn('watch out')
     // Error :|
-
-    // Info
-
+    console.error('check out this sweet error')
+    // Info (not working right?)
+    console.info('I like turtles')
     // Testing
-
+    console.assert('FSU' === 'good place', 'Wrong!')
     // clearing
-
+    // console.clear();
     // Viewing DOM Elements
-
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p);
     // Grouping together
-
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name} and he is ${dog.age} years old`)
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.groupEnd(`${dog.name}`);
+    })
     // counting
-
+    console.count('Tyler')
+    console.count('Tyler')
+    console.count('Hevia')
+    console.count('Tyler')
+    console.count('Hevia')
+    console.count('Tyler')
+    console.count('Tyler')
     // timing
-
+    console.time('fetching');
+    fetch('https://api.github.com/users/tylerjhevia')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      })
+    // table
+    console.table(dogs);
   </script>
 </body>
+
 </html>
